@@ -44,7 +44,17 @@ public class TextAnalyzer {
         String normalized = input.toLowerCase().replaceAll("\\s+", "");
         Deque<Character> stack = new ArrayDeque<>();
 
-        // TODO: implement using the stack described above
-        return false; // replace this line
+        while(stack.size() != normalized.length())
+            {
+                stack.push(normalized.charAt(stack.size()));
+            }
+        while(!stack.isEmpty())
+            {
+                if(stack.pop() != normalized.charAt((normalized.length() - stack.size()) - 1))
+                {
+                    return false;
+                }
+            }       
+        return true; // replace this line
     }
 }
