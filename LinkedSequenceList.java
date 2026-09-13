@@ -90,7 +90,20 @@ public class LinkedSequenceList<T> implements SequenceList<T> {
     @Override
     public T remove(int index) {
         checkIndex(index);
-        // TODO: implement removal at an arbitrary position
+        Node<T> remo;
+
+        if(index = 0)
+        {
+            remo = head;
+            head = head.next;
+        }
+        else
+        {
+            Node<T> previous = node(index - 1);
+            remo = previous.next;
+            previous.next = remo.next;
+        }
+        
         return null; // replace this line
     }
 
