@@ -67,7 +67,22 @@ public class LinkedSequenceList<T> implements SequenceList<T> {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("index: " + index);
         }
-        // TODO: implement insertion at an arbitrary position
+        Node<T> new_Node = new Node(item);
+        new_Node.next = null;
+
+        if(index ==0)
+        {
+            new_Node.next = head;
+            head  = new_Node;
+        }
+        else
+        {
+            Node previous = node(index - 1);
+            new_Node.next = previous.next;
+            previous.next = new_Node;
+        }
+       
+        return;    
     }
 
     @Override
@@ -104,7 +119,7 @@ public class LinkedSequenceList<T> implements SequenceList<T> {
             previous.next = remo.next;
         }
         
-        return null; // replace this line
+        return; // replace this line
     }
 
     @Override
